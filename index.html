@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nash Diche Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #3e62d6;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        canvas {
+            display: block;
+            margin: 20px auto;
+            border: 2px solid #333;
+        }
+        input[type="file"] {
+            margin: 10px 0;
+        }
+        input[type="text"] {
+            padding: 8px;
+            width: 100%;
+            margin: 10px 0;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px 0;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+
+        /* Facebook Button Styling */
+        .facebook-btn {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .facebook-btn button {
+            background-color: #4267B2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .facebook-btn button:hover {
+            background-color: #365899;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Nash Kupal Generator</h1>
+    <div class="container">
+        <input type="file" id="imageInput" accept="image/*"><br>
+        <input type="text" id="topText" placeholder="Top text"><br>
+        <input type="text" id="bottomText" placeholder="Bottom text"><br>
+        <button onclick="generateMeme()">Generate Meme</button>
+        <canvas id="memeCanvas" width="500" height="500"></canvas>
+        <button onclick="downloadMeme()">Download Nash Meme</button>
+        <!-- Facebook Button -->
+    
+        <a href="https://www.facebook.com/markanthony.diche19" target="_blank">
+            <button>Visit Nash Facebook</button>
+        </a>
+    </div>
+
+    </div>
+
+    
+    <script>
+        const canvas = document.getElementById('memeCanvas');
+        const ctx = canvas.getContext('2d');
+        const imageInput = document.getElementById('imageInput');
+        const topTextInput = document.getElementById('topText');
+        const bottomTextInput = document.getElementById('bottomText');
+        let image;
+
+        imageInput.addEventListener('change', function() {
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                image = new Image();
+                image.onload = function() {
+                    canvas.width = image.width;
+                    canvas.height = image.height;
+                    ctx.drawImage(image, 0, 0);
+                }
+                image.src = event.target.result;
+            }
+            reader.readAsDataURL(imageInput.files[0]);
+        });
+
+        function generateMeme() {
+            if (!image) return alert('Please upload an image first!');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(image, 0, 0);
+
+            // Meme Text Style
+            ctx.font = '50px Impact';
+            ctx.fillStyle = 'white';
+            ctx.strokeStyle = 'black';
+            ctx.lineWidth = 5;
+            ctx.textAlign = 'center';
+
+            // Top Text
+            ctx.fillText(topTextInput.value.toUpperCase(), canvas.width / 2, 50);
+            ctx.strokeText(topTextInput.value.toUpperCase(), canvas.width / 2, 50);
+
+            // Bottom Text
+            ctx.fillText(bottomTextInput.value.toUpperCase(), canvas.width / 2, canvas.height - 20);
+            ctx.strokeText(bottomTextInput.value.toUpperCase(), canvas.width / 2, canvas.height - 20);
+        }
+
+        function downloadMeme() {
+            const link = document.createElement('a');
+            link.download = 'meme.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+    </script>
+
+</body>
+</html>
