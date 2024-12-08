@@ -1,1 +1,294 @@
-NashKimi01.github.io
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        /* Basic styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* CSS variables for light and dark themes */
+        :root {
+            --background-color: #ecf0f1;
+            --text-color: #000;
+            --container-bg-color: #fff;
+            --primary-color: #3498db;
+            --sidebar-bg-color: #2c3e50;
+            --sidebar-hover-color: #34495e;
+            --button-hover-color: #2980b9;
+        }
+
+        /* Dark mode variables */
+        .dark-mode {
+            --background-color: rgba(44, 62, 80, 0.8);
+            --text-color: #ecf0f1;
+            --container-bg-color: rgba(52, 73, 94, 0.9);
+            --primary-color: #3498db;
+            --sidebar-bg-color: rgba(26, 37, 47, 0.8);
+            --sidebar-hover-color: rgba(62, 92, 116, 0.8);
+            --button-hover-color: #2980b9;
+        }
+
+        /* Layout styling */
+        body {
+            background-image: url('images (1).jpeg'); /* Replace with your image */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: var(--text-color);
+            display: flex;
+            min-height: 100vh;
+            position: relative;
+            flex-direction: column;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Fallback background if image is not found */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+            z-index: 0;
+        }
+
+        /* Sidebar styling */
+        .sidebar {
+            width: 250px;
+            background-color: var(--sidebar-bg-color);
+            color: #fff;
+            padding: 20px;
+            position: fixed;
+            height: 100%;
+            z-index: 1;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar ul li {
+            margin: 15px 0;
+        }
+
+        .sidebar ul li a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .sidebar ul li a:hover, .sidebar ul li a.active {
+            background-color: var(--sidebar-hover-color);
+        }
+
+        /* Main content styling */
+        .main-content {
+            margin-left: 250px;
+            flex: 1;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 20px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        .content {
+            background-color: var(--container-bg-color);
+            padding: 20px;
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Tabs styling */
+        .tabs {
+            display: flex;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        .tabs div {
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: #fff;
+            border-radius: 4px 4px 0 0;
+            margin-right: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .tabs div.active {
+            background-color: var(--button-hover-color);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Responsive Sidebar */
+        @media (max-width: 768px) {
+            .sidebar {
+                position: sticky;
+                top: 0;
+                width: 100%;
+                height: auto;
+            }
+            .main-content {
+                margin-left: 0;
+            }
+        }
+
+        /* Dark mode toggle styling */
+        .dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            z-index: 2;
+        }
+        
+        footer {
+            background-color: var(--sidebar-bg-color);
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+            border-radius: 4px;
+            margin-top: 20px;
+            font-size: 14px;
+            position: relative;
+            z-index: 1;
+            flex-shrink: 0;
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="sidebar">
+        <h2>Dashboard</h2>
+        <ul>
+            <li><a href="#" class="active">Home</a></li>
+            <li><a href="about.html">Profile</a></li>
+            <li><a href="Resume.html">Resume (CV)</a></li>
+            <li><a href="pong.html">Settings</a></li>
+            <li><a href="contact.html">Messages</a></li>
+            <li><a href="https://www.facebook.com/aguilochotyron/">Logout</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+        <header>
+            <h1>Welcome, Hi I'm Tyron A. Aguilocho!</h1>
+            <p>This is my dasboard.</p>
+        </header>
+        <section class="content">
+            <div class="tabs">
+                <div class="tab active" data-tab="project1">Project 1</div>
+                <a href="Roulette.html"><div class="tab" data-tab="project2">Project 2</div></a>
+                <a href="https://ptlaweca.tech/govfererenationalhighschool/index.php"><div class="tab" data-tab="project3">Project 3</div></a>
+            </div>
+            <div class="tab-content active" id="project1">
+                <h2>Project 1</h2>
+                <p>Description and details of Project 1 go here.</p>
+            </div>
+            <div class="tab-content" id="project2">
+                <h2>Project 2</h2>
+                <p>Description and details of Project 2.</p>
+                <p>Prototype Roulette</p>
+            </div>
+            <div class="tab-content" id="project3">
+                <h2>Project 3</h2>
+                <p>Description and details of Project 3.</p>
+                <p>High School Management Information System</p>
+            </div>
+        </section>
+        <section class="certifications">
+            <h2>My Certifications</h2>
+            <iframe src="certificate merge.pdf" width="100%" height="500px">
+                Your browser does not support PDFs. <a href="certificate merge.pdf">Download the PDF</a> .
+            </iframe>
+        </section>
+    </main>
+
+    <!-- Dark Mode Toggle -->
+    <div class="dark-mode-toggle">
+        <label>
+            <input type="checkbox" id="darkModeToggle">
+            Dark Mode
+        </label>
+    </div>
+
+    <script>
+        // JavaScript for tab functionality
+        const tabs = document.querySelectorAll('.tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+        const sidebarLinks = document.querySelectorAll('.sidebar ul li a');
+        const darkModeToggle = document.getElementById('darkModeToggle');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                tabContents.forEach(content => content.classList.remove('active'));
+                const activeTabContent = document.getElementById(tab.getAttribute('data-tab'));
+                activeTabContent.classList.add('active');
+            });
+        });
+
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                sidebarLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+            });
+        });
+
+        // Dark mode persistence
+        darkModeToggle.addEventListener('change', () => {
+            if (darkModeToggle.checked) {
+                document.body.classList.add('dark-mode');
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                document.body.classList.remove('dark-mode');
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        });
+
+        // Load dark mode preference
+        window.addEventListener('load', () => {
+            if (localStorage.getItem('darkMode') === 'enabled') {
+                document.body.classList.add('dark-mode');
+                darkModeToggle.checked = true;
+            }
+        });
+    </script>
+</body>
+<footer>
+    <p>&copy; 2024 All rights reserved.</p>
+</footer>
+
+</html>
